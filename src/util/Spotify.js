@@ -2,7 +2,7 @@ import { isLabelWithInternallyDisabledControl } from "@testing-library/user-even
 
 let accessToken;
 const clientId = '0722314bf7144740a7e63c1fb943857b';
-const redirectURI = 'http://sptoifynd.surge.sh';
+const redirectURI = 'http://spotifynd.surge.sh';
 
 const Spotify = {
     getAccessToken() {
@@ -59,7 +59,7 @@ const Spotify = {
             .then(response => response.json())
             .then(jsonResponse => {
                 userID = jsonResponse.id;
-                return fetch(`https://api.spotify.com/v1/users/${userID}/playlists)`, {
+                return fetch(`https://api.spotify.com/v1/users/${userID}/playlists`, {
                     headers: headers,
                     method: 'POST',
                     body: JSON.stringify({ name: name })
@@ -67,11 +67,11 @@ const Spotify = {
                     .then(response => response.json())
                     .then(jsonResponse => {
                         const playlistID = jsonResponse.id;
-                        return fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`), {
+                        return fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`, {
                             headers: headers,
                             method: 'POST',
                             body: JSON.stringify({ uris: trackURIs })
-                        }
+                        })
                     })
             })
     }
