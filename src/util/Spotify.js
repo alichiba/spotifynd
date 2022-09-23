@@ -1,7 +1,7 @@
 import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 
 let accessToken;
-const clientId = '0722314bf7144740a7e63c1fb943857b';
+const clientId = ''; //REDACTED. WOULD NEED CLIENTID TO RUN
 const redirectURI = 'http://sptoifynd.surge.sh';
 
 const Spotify = {
