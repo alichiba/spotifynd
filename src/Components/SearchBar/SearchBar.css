@@ -26,15 +26,16 @@
     width: 8.11rem;
     padding: .77rem 0;
     border-radius: 54px;
-    background-color: #010c3f;
+    background-color: #6c41ec;
     text-align: center;
     font-size: .833rem;
-    transition: background-color .25s;
-    border: 0px;
+    border: 2px solid rgba(108, 93, 167, 0.9);
     color: #fff;
     font-weight: 500;
+    box-shadow: 0px 0px 2px 2px rgba(260, 260, 260, 0.2);
   }
   
   .SearchButton:hover {
+    box-shadow: none;
     background-color: rgba(108, 65, 233, .7);
   }

@@ -3,6 +3,7 @@ import './App.css';
 import {SearchBar} from '../SearchBar/SearchBar';
 import {SearchResults} from '../SearchResults/SearchResults';
 import {Playlist} from '../Playlist/Playlist';
+import {Cover} from '../Cover/Cover';
 import Spotify from '../../util/Spotify';
 
 // static values: [{ name: 'song0', album: 'album0', artist: 'artist0', id: 'id0' }, { name: 'song2', album: 'album2', artist: 'artist2', id: 'id2' }] || [{ name: 'song1', album: 'album1', artist: 'artist1', id: 'id1' }, { name: 'song3', album: 'album3', artist: 'artist3', id: 'id3' }]
@@ -64,12 +65,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Ja<span className="highlight">mmm</span>ing</h1>
+        <h1>Spoti<span className="highlight">fynd</span></h1>
         <div className="App">
           <SearchBar onSearch={this.search}/>
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
-            <Playlist playlist={this.state.playlistName} tracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onSave={this.savePlaylist}/>
+            <div className="App-cover">
+              <Cover/>
+              <Playlist playlist={this.state.playlistName} tracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onSave={this.savePlaylist}/>
+            </div> 
           </div>
         </div>
       </div>
