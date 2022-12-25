@@ -10,7 +10,7 @@ export class Cover extends React.Component {
         return (
             <div className="Cover">
                 <h2 className="Title">Cover</h2>
-                <img src="record.jpg"  alt="playlist-cover"/>
+                <img src='./record.png' alt="playlist-cover"/>
                 <input defaultValue={'Enter a descriptive prompt'} onChange={this.handleNameChange}/>
                 <button >GENERATE IMAGE</button>
                 {/* onClick={} */}
