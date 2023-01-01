@@ -2,6 +2,7 @@ import { isLabelWithInternallyDisabledControl } from "@testing-library/user-even
 
 let accessToken;
 const clientId = '5c7cbfaee3354526bbff66576a24890e';
+// process.env.CLIENT_ID
 const redirectURI = 'http://localhost:3000/';
 
 const Spotify = {
