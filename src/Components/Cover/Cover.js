@@ -14,6 +14,7 @@ export class Cover extends React.Component {
                 <input defaultValue={'Enter a descriptive prompt'} onChange={this.handleNameChange}/>
                 <button >GENERATE IMAGE</button>
                 {/* onClick={} */}
+                
 
             </div>
         )
