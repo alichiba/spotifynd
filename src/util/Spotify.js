@@ -1,7 +1,7 @@
 import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 
 let accessToken;
-const clientId = '5c7cbfaee3354526bbff66576a24890e';
+const clientId = process.env.REACT_APP_API_KEY;
 const redirectURI = 'http://localhost:3000/';
 // http://spotifynd.surge.sh
 const Spotify = {
