@@ -1,9 +1,9 @@
 import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 
 let accessToken;
-const clientId = '0722314bf7144740a7e63c1fb943857b';
-const redirectURI = 'http://spotifynd.surge.sh';
-
+const clientId = '5c7cbfaee3354526bbff66576a24890e';
+const redirectURI = 'http://localhost:3000/';
+// http://spotifynd.surge.sh
 const Spotify = {
     getAccessToken() {
         if (accessToken) {
@@ -46,10 +46,14 @@ const Spotify = {
             })
     },
 
-    savePlaylist(name, trackURIs) {
+    savePlaylist(name, trackURIs, coverURL) {
         if (!name || !trackURIs.length) {
             return;
         }
+
+        toDataURL(coverURL, dataUrl => {
+            console.log('RESULT:', dataUrl)
+          })
 
         const accessToken = Spotify.getAccessToken();
         const headers = {Authorization: `Bearer ${accessToken}`};
@@ -67,14 +71,33 @@ const Spotify = {
                     .then(response => response.json())
                     .then(jsonResponse => {
                         const playlistID = jsonResponse.id;
+                        // fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/images`, {
+                        //         headers: headers,
+                        //         method: 'PUT',
+                        //         body: JSON.stringify({ images: cover })
+                        //     })
                         return fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`, {
                             headers: headers,
                             method: 'POST',
                             body: JSON.stringify({ uris: trackURIs })
                         })
-                    })
+                    }).catch(err => console.error(err))
             })
     }
 }
+
+function toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
 
 export default Spotify;

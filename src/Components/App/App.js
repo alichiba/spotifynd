@@ -13,8 +13,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchResults: [], 
-      playlistName: 'new playlist',
+      playlistName: 'My Mixtape',
       playlistTracks: [],
+      cover: ["http://localhost:3000/record.png"]
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -48,9 +49,9 @@ class App extends React.Component {
 
   savePlaylist() {
     let trackURIs = this.state.playlistTracks.map(track => track.uri);
-    Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
+    Spotify.savePlaylist(this.state.playlistName, trackURIs, this.state.cover).then(() => {
       this.setState({
-        playlistName: 'new playlist',
+        playlistName: 'My Mixtape',
         playlistTracks: []
       });
     });
