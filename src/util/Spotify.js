@@ -1,8 +1,8 @@
 import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 
 let accessToken;
-const clientId = process.env.REACT_APP_API_KEY;
-const redirectURI = 'http://localhost:3000/';
+const clientId = process.env.SPOTIFY_API_KEY;
+const redirectURI = 'https://spotifynd-mix.vercel.app/';
 // http://spotifynd.surge.sh
 const Spotify = {
     getAccessToken() {
