@@ -1,8 +1,6 @@
-import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
-
 let accessToken;
-const clientId = process.env.SPOTIFY_API_KEY;
-const redirectURI = 'https://spotifynd-mix.vercel.app/';
+const clientId = process.env.REACT_APP_API_KEY;
+const redirectURI = 'https://spotifynd-mix.vercel.app';
 // http://spotifynd.surge.sh
 const Spotify = {
     getAccessToken() {
@@ -83,6 +81,19 @@ const Spotify = {
                         })
                     }).catch(err => console.error(err))
             })
+    },
+
+    hasAccessToken() {
+        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
+        const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
+
+        if (accessToken) {
+            return true;
+        }
+        if (accessTokenMatch && expiresInMatch) {
+            return true;
+        }
+        return false;
     }
 }
 
